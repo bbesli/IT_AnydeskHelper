@@ -1,0 +1,70 @@
+﻿<Window x:Class="IT_AnydeskHelper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IT_AnydeskHelper"
+        xmlns:viewModel="clr-namespace:IT_AnydeskHelper.MVVM.ViewModel"
+        mc:Ignorable="d"
+        Height="600" Width="920"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+
+    <Border Background="#FF99C3BD"
+            CornerRadius="20">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Image Source="/Images/mayen-logo.png" 
+               Grid.Column="0" 
+               Grid.Row="0" 
+               Margin="15" 
+               VerticalAlignment="Center" 
+               HorizontalAlignment="Center"/>
+            <StackPanel Grid.Row="1">
+                <RadioButton Content="Bilgi İşlem"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="24"
+                             Style="{StaticResource MenuButtonTheme}" 
+                             Checked="RadioButton_Checked"/>
+                <RadioButton Content="Test"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="24"
+                             Style="{StaticResource MenuButtonTheme}" 
+                             Checked="RadioButton_Checked"/>
+                <!--Menu itemları RadioButton kopyalanarak çoğaltılabilir.-->
+
+            </StackPanel>
+
+            <TextBox x:Name="SearchBox" Width="250"
+                     Height="40"
+                     VerticalContentAlignment="Center"
+                     HorizontalAlignment="Right"
+                     Margin="5"
+                     Grid.Column="1"
+                     Style="{StaticResource ModernTextBox}"/>
+
+            <ContentControl Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10"
+                            Content="{Binding CurrentView}"/>
+
+        </Grid>
+
+
+    </Border>
+</Window>
